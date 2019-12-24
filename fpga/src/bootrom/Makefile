@@ -6,7 +6,13 @@ CFLAGS = -Os -ggdb -march=rv64imac -mabi=lp64 -Wall -mcmodel=medany -mexplicit-r
 CCASFLAGS = -mcmodel=medany -mexplicit-relocs
 LDFLAGS = -nostdlib -nodefaultlibs -nostartfiles
 
-INCLUDES = -I./ -I./src
+ifneq ("$(wildcard $(BOARD))", "")
+	PLATFORM:=$(BOARD)
+else
+	PLATFORM:=default
+endif
+
+INCLUDES = -I./ -I./src -I$(PLATFORM)
 
 SRCS_C = src/main.c src/uart.c src/spi.c src/sd.c src/gpt.c
 SRCS_ASM = startup.S
@@ -38,7 +44,7 @@ $(MAIN): ariane.dtb $(OBJS_C) $(OBJS_S) linker.lds
 	@$(CC) $(CFLAGS) $(CCASFLAGS) $(INCLUDES) -c $<  -o $@
 	@echo "CC    <= $<"
 
-%.dtb: %.dts
+%.dtb: $(PLATFORM)/%.dts
 	dtc -I dts $< -O dtb -o $@
 
 %.sv: %.img

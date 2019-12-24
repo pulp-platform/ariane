@@ -172,6 +172,16 @@ package ariane_pkg;
     localparam bit XFVEC   = 1'b0; // Is vectorial float extension (Xfvec) enabled
 
     // Transprecision float unit
+`ifdef FPU_SLOWER
+    localparam int unsigned LAT_COMP_FP32    = 'd3;
+    localparam int unsigned LAT_COMP_FP64    = 'd5;
+    localparam int unsigned LAT_COMP_FP16    = 'd2;
+    localparam int unsigned LAT_COMP_FP16ALT = 'd2;
+    localparam int unsigned LAT_COMP_FP8     = 'd2;
+    localparam int unsigned LAT_DIVSQRT      = 'd3;
+    localparam int unsigned LAT_NONCOMP      = 'd2;
+    localparam int unsigned LAT_CONV         = 'd3;
+`else
     localparam int unsigned LAT_COMP_FP32    = 'd2;
     localparam int unsigned LAT_COMP_FP64    = 'd3;
     localparam int unsigned LAT_COMP_FP16    = 'd1;
@@ -180,6 +190,7 @@ package ariane_pkg;
     localparam int unsigned LAT_DIVSQRT      = 'd2;
     localparam int unsigned LAT_NONCOMP      = 'd1;
     localparam int unsigned LAT_CONV         = 'd2;
+`endif
 
     // --------------------------------------
     // vvvv Don't change these by hand! vvvv

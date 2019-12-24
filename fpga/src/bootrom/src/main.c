@@ -2,10 +2,11 @@
 #include "spi.h"
 #include "sd.h"
 #include "gpt.h"
+#include "platform.h"
 
 int main()
 {
-    init_uart(50000000, 115200);
+    init_uart(UART_FREQUENCY, UART_BAUD);
     print_uart("Hello World!\r\n");
 
     int res = gpt_find_boot_partition((uint8_t *)0x80000000UL, 2 * 16384);
