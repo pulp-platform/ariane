@@ -1,0 +1,153 @@
+// Copyright (c) 2018 ETH Zurich, University of Bologna
+// All rights reserved.
+//
+// This code is under development and not yet released to the public.
+// Until it is released, the code is under the copyright of ETH Zurich and
+// the University of Bologna, and may contain confidential and/or unpublished
+// work. Any reuse/redistribution is strictly forbidden without written
+// permission from ETH Zurich.
+//
+// Bug fixes and contributions will eventually be released under the
+// SolderPad open hardware license in the context of the PULP platform
+// (http://www.pulp-platform.org), under the copyright of ETH Zurich and the
+// University of Bologna.
+//
+// Author: Michael Schaffner <schaffner@iis.ee.ethz.ch>, ETH Zurich
+// Date: 15.08.2018
+// Description: File list for OpenPiton flow
++incdir+src/common_cells/include/
++incdir+src/util/
+include/cva6_riscv_pkg.sv
+src/riscv-dbg/src/dm_pkg.sv
+include/cva6_pkg.sv
+src/common_cells/src/deprecated/rrarbiter.sv
+src/common_cells/src/deprecated/fifo_v1.sv
+src/common_cells/src/deprecated/fifo_v2.sv
+src/common_cells/src/fifo_v3.sv
+src/common_cells/src/lfsr_8bit.sv
+src/common_cells/src/lzc.sv
+src/common_cells/src/rr_arb_tree.sv
+src/common_cells/src/rstgen_bypass.sv
+src/common_cells/src/cdc_2phase.sv
+src/common_cells/src/shift_reg.sv
+src/common_cells/src/unread.sv
+src/common_cells/src/popcount.sv
+src/common_cells/src/exp_backoff.sv
+src/register_interface/src/apb_to_reg.sv
+src/register_interface/src/reg_intf_pkg.sv
+src/register_interface/src/reg_intf.sv
+src/fpu/src/fpnew_pkg.sv
+src/fpu/src/fpu_div_sqrt_mvp/hdl/defs_div_sqrt_mvp.sv
+src/fpu/src/fpu_div_sqrt_mvp/hdl/control_mvp.sv
+src/fpu/src/fpu_div_sqrt_mvp/hdl/div_sqrt_mvp_wrapper.sv
+src/fpu/src/fpu_div_sqrt_mvp/hdl/div_sqrt_top_mvp.sv
+src/fpu/src/fpu_div_sqrt_mvp/hdl/iteration_div_sqrt_mvp.sv
+src/fpu/src/fpu_div_sqrt_mvp/hdl/norm_div_sqrt_mvp.sv
+src/fpu/src/fpu_div_sqrt_mvp/hdl/nrbd_nrsc_mvp.sv
+src/fpu/src/fpu_div_sqrt_mvp/hdl/preprocess_mvp.sv
+src/fpu/src/fpnew_cast_multi.sv
+src/fpu/src/fpnew_classifier.sv
+src/fpu/src/fpnew_divsqrt_multi.sv
+src/fpu/src/fpnew_fma_multi.sv
+src/fpu/src/fpnew_fma.sv
+src/fpu/src/fpnew_noncomp.sv
+src/fpu/src/fpnew_opgroup_block.sv
+src/fpu/src/fpnew_opgroup_fmt_slice.sv
+src/fpu/src/fpnew_opgroup_multifmt_slice.sv
+src/fpu/src/fpnew_rounding.sv
+src/fpu/src/fpnew_top.sv
+src/axi/src/axi_pkg.sv
+tb/cva6_soc_pkg.sv
+include/cva6_axi_pkg.sv
+include/cva6_wt_cache_pkg.sv
+//include/cva6_std_cache_pkg.sv
+include/cva6_axi_intf.sv
+include/cva6_instr_tracer_pkg.sv
+src/util/cva6_instr_tracer_if.sv
+src/util/cva6_instr_tracer.sv
+src/util/cva6_sram.sv
+src/util/cva6_axi_master_connect.sv
+src/util/cva6_axi_master_connect_rev.sv
+src/util/cva6_axi_slave_connect.sv
+src/util/cva6_axi_slave_connect_rev.sv
+src/fpga-support/rtl/SyncSpRamBeNx64.sv
+src/cva6_dromajo_ram.sv
+src/axi_mem_if/src/axi2mem.sv
+src/tech_cells_generic/src/pulp_clock_gating.sv
+src/tech_cells_generic/src/cluster_clock_inverter.sv
+src/tech_cells_generic/src/pulp_clock_mux2.sv
+src/cva6_axi_adapter.sv
+src/cva6_alu.sv
+src/cva6_fpu_wrap.sv
+src/cva6.sv
+src/cva6_branch_unit.sv
+src/cva6_compressed_decoder.sv
+src/cva6_controller.sv
+src/cva6_csr_buffer.sv
+src/cva6_csr_regfile.sv
+src/cva6_decoder.sv
+src/cva6_ex_stage.sv
+src/cva6_instr_realign.sv
+src/frontend/cva6_btb.sv
+src/frontend/cva6_bht.sv
+src/frontend/cva6_ras.sv
+src/frontend/cva6_instr_scan.sv
+src/frontend/cva6_instr_queue.sv
+src/frontend/cva6_frontend.sv
+src/cva6_id_stage.sv
+src/cva6_issue_read_operands.sv
+src/cva6_issue_stage.sv
+src/cva6_load_unit.sv
+src/cva6_load_store_unit.sv
+src/cva6_mmu.sv
+src/cva6_mult.sv
+src/cva6_multiplier.sv
+src/cva6_serdiv.sv
+src/cva6_perf_counters.sv
+src/cva6_ptw.sv
+src/cva6_regfile_ff.sv
+src/cva6_re_name.sv
+src/cva6_scoreboard.sv
+src/cva6_store_buffer.sv
+src/cva6_amo_buffer.sv
+src/cva6_store_unit.sv
+src/cva6_tlb.sv
+src/cva6_commit_stage.sv
+src/cache_subsystem/cva6_wt_dcache_ctrl.sv
+src/cache_subsystem/cva6_wt_dcache_mem.sv
+src/cache_subsystem/cva6_wt_dcache_missunit.sv
+src/cache_subsystem/cva6_wt_dcache_wbuffer.sv
+src/cache_subsystem/cva6_wt_dcache.sv
+src/cache_subsystem/cva6_wt_icache.sv
+src/cache_subsystem/cva6_wt_l15_adapter.sv
+src/cache_subsystem/cva6_wt_cache_subsystem.sv
+src/clint/cva6_clint.sv
+src/clint/cva6_axi_lite_interface.sv
+src/riscv-dbg/src/dm_csrs.sv
+src/riscv-dbg/src/dm_mem.sv
+src/riscv-dbg/src/dm_top.sv
+src/riscv-dbg/src/dmi_cdc.sv
+src/riscv-dbg/src/dmi_jtag.sv
+src/riscv-dbg/src/dm_sba.sv
+src/riscv-dbg/src/dmi_jtag_tap.sv
+src/riscv-dbg/debug_rom/debug_rom.sv
+openpiton/cva6_verilog_wrap.sv
+openpiton/cva6_riscv_peripherals.sv
+openpiton/bootrom/baremetal/bootrom.sv
+openpiton/bootrom/linux/bootrom_linux.sv
+src/rv_plic/rtl/rv_plic_target.sv
+src/rv_plic/rtl/rv_plic_gateway.sv
+src/rv_plic/rtl/plic_regmap.sv
+src/rv_plic/rtl/plic_top.sv
+fpga/src/axi2apb/src/axi2apb_wrap.sv
+fpga/src/axi2apb/src/axi2apb.sv
+fpga/src/axi2apb/src/axi2apb_64_32.sv
+fpga/src/axi_slice/src/axi_w_buffer.sv
+fpga/src/axi_slice/src/axi_b_buffer.sv
+fpga/src/axi_slice/src/axi_slice_wrap.sv
+fpga/src/axi_slice/src/axi_slice.sv
+fpga/src/axi_slice/src/axi_single_slice.sv
+fpga/src/axi_slice/src/axi_ar_buffer.sv
+fpga/src/axi_slice/src/axi_r_buffer.sv
+fpga/src/axi_slice/src/axi_aw_buffer.sv
+

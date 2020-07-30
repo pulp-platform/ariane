@@ -1,0 +1,72 @@
+CAPI=2:
+name : ::cva6:0
+
+filesets:
+  rtl:
+    files:
+      - include/cva6_pkg.sv
+      - include/cva6_nbdcache_pkg.sv
+      - src/cva6_alu.sv
+      - src/cva6.sv
+      - src/cva6_wrapped.sv
+      - src/cva6_branch_unit.sv
+      - src/cva6_btb.sv
+      - src/cva6_cache_ctrl.sv
+      - src/cva6_commit_stage.sv
+      - src/cva6_compressed_decoder.sv
+      - src/cva6_controller.sv
+      - src/cva6_csr_buffer.sv
+      - src/cva6_csr_regfile.sv
+      - src/cva6_debug_unit.sv
+      - src/cva6_decoder.sv
+      - src/cva6_ex_stage.sv
+      - src/cva6_fetch_fifo.sv
+      - src/cva6_fifo.sv
+      - src/cva6_icache.sv
+      - src/cva6_id_stage.sv
+      - src/cva6_if_stage.sv
+      - src/cva6_instr_realigner.sv
+      - src/cva6_issue_read_operands.sv
+      - src/cva6_issue_stage.sv
+      - src/cva6_lfsr.sv
+      - src/cva6_load_unit.sv
+      - src/cva6_lsu_arbiter.sv
+      - src/cva6_lsu.sv
+      - src/cva6_miss_handler.sv
+      - src/cva6_mmu.sv
+      - src/cva6_mult.sv
+      - src/cva6_nbdcache.sv
+      - src/cva6_pcgen_stage.sv
+      - src/cva6_perf_counters.sv
+      - src/cva6_ptw.sv
+      - src/cva6_regfile_ff.sv
+      - src/cva6_scoreboard.sv
+      - src/cva6_store_buffer.sv
+      - src/cva6_store_unit.sv
+      - src/cva6_tlb.sv
+    file_type : systemVerilogSource
+    depend :
+      - pulp-platform.org::axi_mem_if
+      - tool_verilator? (pulp-platform::uvm-components)
+  behav_sram:
+    files:
+      - src/util/behav_sram.sv
+    file_type : systemVerilogSource
+    
+targets:
+  verilator:
+    default_tool : verilator
+    filesets: [behav_sram, rtl]
+    tools:
+      verilator:
+        mode : cc
+        verilator_options :
+          - --unroll-count 256
+          - -Wno-fatal
+          - -LDFLAGS
+          - "-lfesvr"
+          - -CFLAGS
+          - "-std=c++11"
+          - -Wall
+          - --trace
+    toplevel : [cva6_wrapped]
