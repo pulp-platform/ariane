@@ -12,7 +12,10 @@
 // Date: 17.06.2017
 // Description: Instruction tracer single exception item
 
+`ifndef __EX_TRACE_ITEM_INC__
+`define __EX_TRACE_ITEM_INC__
 `ifndef VERILATOR
+
 class ex_trace_item;
     // contains a human readable form of the cause value
     string                  cause_s;
@@ -57,6 +60,8 @@ class ex_trace_item;
         string s;
         s = $sformatf("Exception @%10t, PC: %h, Cause: %s", $time, this.pc, this.cause_s);
         // write out tval if it wasn't an environment call or interrupt, in that case the tval field has no meaning
+        // TODO: check with author and determine intent
+        /*
         if (!(this.cause inside {
                 riscv::ENV_CALL_MMODE,
                 riscv::ENV_CALL_SMODE,
@@ -69,8 +74,11 @@ class ex_trace_item;
                 riscv::M_EXT_INTERRUPT
             }))
             s = $sformatf("%s, \n\t\t\t\ttval: %h", s, this.tval);
-        return s;
-    endfunction
+        */
+        printException = s;
+    endfunction : printException
 
-endclass : ex_trace_item
-`endif
+endclass
+
+`endif // __EX_TRACE_ITEM_INC__
+`endif // VERILATOR

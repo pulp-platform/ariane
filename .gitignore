@@ -32,3 +32,8 @@ work-dpi/
 tb/riscv-isa-sim/
 work-*/*
 install/
+*.swp
+dsim.*
+dsim_*
+xrun.*
+metrics_history.db
